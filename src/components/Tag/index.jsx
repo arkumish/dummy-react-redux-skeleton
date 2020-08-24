@@ -19,9 +19,16 @@ export class Tag extends Component {
 
              <h1>Tag data</h1>
             {!TagData && <p>Loading data....</p>}
-            {_.map(TagData.data, tdata =>(
-                <p>{tdata.title}</p>
-            )) }
+            {!_.isEmpty(TagData) && (
+                <>
+                <p>STORIES : </p>
+                <ul>
+                {_.map(TagData.data.stories, tdata =>(
+                   <li>{tdata.title}</li>
+                ))}
+                </ul>
+                </>
+            )}
             </div>
         )
     }

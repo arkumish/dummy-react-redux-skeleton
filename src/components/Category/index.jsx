@@ -15,13 +15,28 @@ export class Category extends Component {
         const { CategoryData } = this.props
         return (
             <div>
-        
+                
              <h1>Category data</h1>
 
+            {!_.isEmpty(CategoryData) && (
+                <>
+                <p>Category : {CategoryData.data.category.name}</p>
+                <p>Slug : {CategoryData.data.category.slug}</p>
+                </>
+            )} 
+           
             {_.isEmpty(CategoryData) && <p>Loading data....</p>}
-            {_.map(CategoryData.data, tdata =>(
-                <p>{tdata.title}</p>
-            )) }
+            {!_.isEmpty(CategoryData) && (
+                <>
+                <p>STORIES : </p>
+                <ul>
+                {_.map(CategoryData.data.stories, tdata =>(
+                   <li>{tdata.title}</li>
+                ))}
+                </ul>
+                </>
+            )}
+    
             </div>
         )
     }
